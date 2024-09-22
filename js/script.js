@@ -16,6 +16,7 @@ const inpGuess = document.querySelector(".guess");
 const pbAgain = document.querySelector(".again");
 
 const pbGuess = document.querySelector(".check");
+const lblHighScore = document.querySelector(".highscore");
 
 
 
@@ -27,7 +28,7 @@ const pbGuess = document.querySelector(".check");
 let randomNumber = 0;
 function randomNumberGenerator(){
     randomNumber = Math.trunc(Math.random() * 20) + 1;
-    //lblNumber.textContent = randomNumber;
+    lblNumber.textContent = randomNumber;
 }
 
 
@@ -48,11 +49,14 @@ function guessNumber(){
     }
 }
 
+const MAXIMUM_VALUE = 20;
+const MINIMUM_VALUE = 1;
+
 function betweenOneAndTwenty(){
-    if (inpGuess.value > 20){
+    if (inpGuess.value > MAXIMUM_VALUE){
         lblMessage.textContent = "Must not be higher than 20!";
     }
-    else if(inpGuess.value < 1){
+    else if(inpGuess.value <= MINIMUM_VALUE){
         lblMessage.textContent = "Must not be lower than 1!";
     }
 }
@@ -63,6 +67,9 @@ function decreaseScore(){
         lblScore.textContent = currentScore - 1;
     } else if (guessNumber() > randomNumber) {
         lblScore.textContent = currentScore - 1;
+    }
+    else {
+        lblHighScore.textContent = lblScore.textContent;
     }
 }
 
