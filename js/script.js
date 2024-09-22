@@ -16,6 +16,7 @@ const inpGuess = document.querySelector(".guess");
 const pbAgain = document.querySelector(".again");
 
 const pbGuess = document.querySelector(".check");
+
 const lblHighScore = document.querySelector(".highscore");
 
 
@@ -63,17 +64,25 @@ function betweenOneAndTwenty(){
 
 function decreaseScore(){
     let currentScore = Number(lblScore.textContent);
-    if (guessNumber() < randomNumber) {
+    let guessedNumber = guessNumber();
+    if (guessedNumber < randomNumber) {
         lblScore.textContent = currentScore - 1;
-    } else if (guessNumber() > randomNumber) {
+    } else if (guessedNumber > randomNumber) {
         lblScore.textContent = currentScore - 1;
-    }
-    else {
-        lblHighScore.textContent = lblScore.textContent;
+    } else {
+        updateHighScore(currentScore);
     }
 }
 
+function updateHighScore(currentScore) {
+    // Update the high score
+    lblHighScore.textContent = currentScore;
+}
+
+
+
 //----------------------------------------------------------------------
+//lblNumber.addEventListener("play", randomNumberGenerator);
 pbAgain.addEventListener("click", randomNumberGenerator);
 pbGuess.addEventListener("click", guessNumber);
 pbGuess.addEventListener("click", betweenOneAndTwenty);
