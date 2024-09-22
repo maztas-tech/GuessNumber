@@ -32,14 +32,14 @@ pbAgain.addEventListener("click", randomNumberGenerator);
 
 function guessNumber(){
     const guess = inpGuess.value;
-    if (guess == randomNumber){
-        lblMessage.textContent = "du har vundet!";
-    }
-    else if (guess < randomNumber){
+    if (guess < randomNumber){
         lblMessage.textContent = "Dit gæt er alt for lavt!"
     }
     else if (guess > randomNumber){
         lblMessage.textContent = "Dit gæt er alt for højt!"
+    }
+    else {
+        lblMessage.textContent = "Dit gæt er korrekt!";
     }
 
 }
