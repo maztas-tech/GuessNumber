@@ -17,13 +17,14 @@ const pbAgain = document.querySelector(".again");
 
 const pbGuess = document.querySelector(".check");
 
-let randomNumber = 0;
+
 
 
 
 
 //METODER
 //Generer random nummer
+let randomNumber = 0;
 function randomNumberGenerator(){
     randomNumber = Math.trunc(Math.random() * 20) + 1;
     //lblNumber.textContent = randomNumber;
@@ -35,15 +36,15 @@ function guessNumber(){
     const guess = inpGuess.value;
     if (guess < randomNumber){
         lblMessage.textContent = "Dit gæt er alt for lavt!"
-        lblScore.value--;
+        return guess;
     }
     else if (guess > randomNumber){
         lblMessage.textContent = "Dit gæt er alt for højt!"
-        lblScore.value--;
+        return guess;
     }
     else {
         lblMessage.textContent = "Dit gæt er korrekt!";
-
+        return guess;
     }
 }
 
@@ -56,9 +57,19 @@ function betweenOneAndTwenty(){
     }
 }
 
+function decreaseScore(){
+    let currentScore = Number(lblScore.textContent);
+    if (guessNumber() < randomNumber) {
+        lblScore.textContent = currentScore - 1;
+    } else if (guessNumber() > randomNumber) {
+        lblScore.textContent = currentScore - 1;
+    }
+}
+
 //----------------------------------------------------------------------
 pbAgain.addEventListener("click", randomNumberGenerator);
 pbGuess.addEventListener("click", guessNumber);
 pbGuess.addEventListener("click", betweenOneAndTwenty);
+pbGuess.addEventListener("click", decreaseScore)
 
 
