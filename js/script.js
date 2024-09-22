@@ -79,8 +79,10 @@ function decreaseScore(){
 }
 
 function updateHighScore(currentScore) {
-    lblHighScore.textContent = currentScore;
-    highScore = currentScore;
+    let highScore = Number(lblHighScore.textContent);
+    if (currentScore > highScore){
+        lblHighScore.textContent = currentScore;
+    }
 }
 
 
