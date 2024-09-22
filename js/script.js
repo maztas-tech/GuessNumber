@@ -53,14 +53,17 @@ function guessNumber(){
     const guess = inpGuess.value;
     if (guess < randomNumber){
         lblMessage.textContent = "Dit gæt er alt for lavt!"
+        document.body.style.backgroundColor = "#E57373";
         return guess;
     }
     else if (guess > randomNumber){
         lblMessage.textContent = "Dit gæt er alt for højt!"
+        document.body.style.backgroundColor = "#E57373";
         return guess;
     }
     else {
         lblMessage.textContent = "Dit gæt er korrekt!";
+        document.body.style.backgroundColor = "#81C784";
         return guess;
     }
 }
