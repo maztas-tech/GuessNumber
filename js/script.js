@@ -35,6 +35,13 @@ function guessNumber(){
     if (guess == randomNumber){
         lblMessage.textContent = "du har vundet!";
     }
+    else if (guess < randomNumber){
+        lblMessage.textContent = "Dit gæt er alt for lavt!"
+    }
+    else if (guess > randomNumber){
+        lblMessage.textContent = "Dit gæt er alt for højt!"
+    }
+
 }
 
 //----------------------------------------------------------------------
