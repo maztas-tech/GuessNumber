@@ -31,20 +31,33 @@ function randomNumberGenerator(){
 pbAgain.addEventListener("click", randomNumberGenerator);
 
 function guessNumber(){
+    betweenOneAndTwenty()
     const guess = inpGuess.value;
     if (guess < randomNumber){
         lblMessage.textContent = "Dit gæt er alt for lavt!"
+        lblScore.value--;
     }
     else if (guess > randomNumber){
         lblMessage.textContent = "Dit gæt er alt for højt!"
+        lblScore.value--;
     }
     else {
         lblMessage.textContent = "Dit gæt er korrekt!";
-    }
 
+    }
+}
+
+function betweenOneAndTwenty(){
+    if (inpGuess.value > 20){
+        lblMessage.textContent = "Must not be higher than 20!";
+    }
+    else if(inpGuess.value < 1){
+        lblMessage.textContent = "Must not be lower than 1!";
+    }
 }
 
 //----------------------------------------------------------------------
 pbGuess.addEventListener("click", guessNumber);
+pbGuess.addEventListener("click", betweenOneAndTwenty);
 
 
