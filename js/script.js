@@ -21,19 +21,30 @@ const lblHighScore = document.querySelector(".highscore");
 
 
 
-
+//Globale variables:
+let randomNumber = 0;
+let highScore = 0;
+const MAXIMUM_VALUE = 20;
+const MINIMUM_VALUE = 1;
 
 
 //METODER
 //Generer random nummer
-let randomNumber = 0;
-let highScore = 0;
-
 
 function randomNumberGenerator(){
     randomNumber = Math.trunc(Math.random() * 20) + 1;
     lblNumber.textContent = randomNumber;
     lblScore.textContent = 20;
+}
+
+function betweenOneAndTwenty(){
+    const guess = Number(inpGuess.value);
+    if (guess > MAXIMUM_VALUE){
+        lblMessage.textContent = "Must not be higher than 20!";
+    }
+    else if(guess < MINIMUM_VALUE){
+        lblMessage.textContent = "Must not be lower than 1!";
+    }
 }
 
 
@@ -54,17 +65,6 @@ function guessNumber(){
     }
 }
 
-const MAXIMUM_VALUE = 20;
-const MINIMUM_VALUE = 1;
-
-function betweenOneAndTwenty(){
-    if (inpGuess.value > MAXIMUM_VALUE){
-        lblMessage.textContent = "Must not be higher than 20!";
-    }
-    else if(inpGuess.value <= MINIMUM_VALUE){
-        lblMessage.textContent = "Must not be lower than 1!";
-    }
-}
 
 function decreaseScore(){
     let currentScore = Number(lblScore.textContent);
@@ -79,7 +79,7 @@ function decreaseScore(){
 }
 
 function updateHighScore(currentScore) {
-    let highScore = Number(lblHighScore.textContent);
+    highScore = Number(lblHighScore.textContent);
     if (currentScore > highScore){
         lblHighScore.textContent = currentScore;
     }
@@ -88,9 +88,10 @@ function updateHighScore(currentScore) {
 
 
 //----------------------------------------------------------------------
-pbAgain.addEventListener("click", randomNumberGenerator);
 pbGuess.addEventListener("click", guessNumber);
+pbGuess.addEventListener("click", decreaseScore);
 pbGuess.addEventListener("click", betweenOneAndTwenty);
-pbGuess.addEventListener("click", decreaseScore)
+pbAgain.addEventListener("click", randomNumberGenerator);
+
 
 
