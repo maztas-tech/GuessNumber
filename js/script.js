@@ -27,9 +27,13 @@ const lblHighScore = document.querySelector(".highscore");
 //METODER
 //Generer random nummer
 let randomNumber = 0;
+let highScore = 0;
+
+
 function randomNumberGenerator(){
     randomNumber = Math.trunc(Math.random() * 20) + 1;
     lblNumber.textContent = randomNumber;
+    lblScore.textContent = 20;
 }
 
 
@@ -75,14 +79,13 @@ function decreaseScore(){
 }
 
 function updateHighScore(currentScore) {
-    // Update the high score
     lblHighScore.textContent = currentScore;
+    highScore = currentScore;
 }
 
 
 
 //----------------------------------------------------------------------
-//lblNumber.addEventListener("play", randomNumberGenerator);
 pbAgain.addEventListener("click", randomNumberGenerator);
 pbGuess.addEventListener("click", guessNumber);
 pbGuess.addEventListener("click", betweenOneAndTwenty);
