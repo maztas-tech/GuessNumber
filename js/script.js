@@ -26,12 +26,12 @@ let randomNumber = 0;
 //Generer random nummer
 function randomNumberGenerator(){
     randomNumber = Math.trunc(Math.random() * 20) + 1;
-    lblNumber.textContent = randomNumber;
+    //lblNumber.textContent = randomNumber;
 }
-pbAgain.addEventListener("click", randomNumberGenerator);
+
+
 
 function guessNumber(){
-    betweenOneAndTwenty()
     const guess = inpGuess.value;
     if (guess < randomNumber){
         lblMessage.textContent = "Dit gæt er alt for lavt!"
@@ -57,6 +57,7 @@ function betweenOneAndTwenty(){
 }
 
 //----------------------------------------------------------------------
+pbAgain.addEventListener("click", randomNumberGenerator);
 pbGuess.addEventListener("click", guessNumber);
 pbGuess.addEventListener("click", betweenOneAndTwenty);
 
